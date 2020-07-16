@@ -31,6 +31,7 @@ module.exports = {
           { text: '前端项目健康检查工具🔧', link: '/WebScouter/' },
           { text: '图床', link: 'https://img.xjq.icu' },
           { text: 'IT电子书', link: 'https://github.com/SummerJoan3/books' },
+          { text: '高赞文章', link: 'https://star.xjq.icu' },
           { text: 'Github', link: 'https://github.com/SummerJoan3' },
         ],
       },
