@@ -42,6 +42,7 @@ module.exports = {
       '/FrontEnd/': [
         '',
         'Apk-build',
+        'Bignumberjs',
         'Crontab',
         'Css',
         'Custom-hook',
@@ -53,6 +54,7 @@ module.exports = {
         'Form-register',
         'Hooks',
         'Http-status-code',
+        'Js-accuracy',
         'Js',
         'Node-pm2',
         'String-method',
