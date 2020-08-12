@@ -98,3 +98,12 @@ const usePrevious = (state) => {
 
 export default usePrevious
 ```
+
+<!-- const useForceUpdate = () => {
+  const [, dispatch] = useState(Object.create(null));
+
+  const memoizedDispatch = useCallback(() => {
+    dispatch(Object.create(null));
+  }, [dispatch]);
+  return memoizedDispatch;
+}; -->
