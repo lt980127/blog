@@ -7,6 +7,89 @@ sidebarDepth: 2
 
 这里均不考虑动态内存释放问题
 
+### 155. 最小栈
+
+用一个辅助栈记录每次入栈后的最小值
+
+```js
+/**
+ * initialize your data structure here.
+ */
+var MinStack = function () {
+  this.arr = []
+  this.length = 0
+  var HelpMinStack = function () {
+    this.arr = []
+  }
+
+  HelpMinStack.prototype.push = function (x) {
+    this.arr.push(x)
+  }
+
+  HelpMinStack.prototype.pop = function () {
+    this.arr.pop()
+  }
+
+  HelpMinStack.prototype.top = function () {
+    return this.arr[this.arr.length - 1]
+  }
+  var h = new HelpMinStack()
+  this.h = h
+}
+
+/**
+ * @param {number} x
+ * @return {void}
+ */
+MinStack.prototype.push = function (x) {
+  this.arr.push(x)
+  this.length++
+
+  const t = this.h.top()
+  if (t === undefined) {
+    this.h.push(x)
+  } else {
+    if (x < t) {
+      this.h.push(x)
+    } else {
+      this.h.push(t)
+    }
+  }
+}
+
+/**
+ * @return {void}
+ */
+MinStack.prototype.pop = function () {
+  this.length--
+  this.arr.pop()
+  this.h.pop()
+}
+
+/**
+ * @return {number}
+ */
+MinStack.prototype.top = function () {
+  return this.arr[this.length - 1]
+}
+
+/**
+ * @return {number}
+ */
+MinStack.prototype.getMin = function () {
+  return this.h.top()
+}
+
+/**
+ * Your MinStack object will be instantiated and called as such:
+ * var obj = new MinStack()
+ * obj.push(x)
+ * obj.pop()
+ * var param_3 = obj.top()
+ * var param_4 = obj.getMin()
+ */
+```
+
 ### 844.比较含退格的字符串
 
 双指针、栈都 ok
@@ -170,6 +253,39 @@ char * removeDuplicates(char * S){
 ```
 
 ## 链表
+
+### 83. 删除排序链表中的重复元素
+
+```js
+/**
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+/**
+ * @param {ListNode} head
+ * @return {ListNode}
+ */
+var deleteDuplicates = function (head) {
+  var temp = null
+  let cur = head
+  while (cur) {
+    if (!temp) {
+      temp = cur
+    } else if (temp.val !== cur.val) {
+      temp.next = cur
+      temp = cur
+    }
+    cur = cur.next
+  }
+  if (temp) {
+    temp.next = null
+  }
+  return head
+}
+```
 
 ### 206. 反转链表
 
