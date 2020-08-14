@@ -19,11 +19,11 @@ sidebar: auto
 
 - 熟悉 前端模块化开发,MVVM、组件化开发模式
 
-- 熟悉 react,react hook,熟悉 react-native,了解 vue
+- 熟悉 react, react-native,vue
 
-- 熟悉 antd 组件库、dva 、redux 状态管理
+- 熟悉 antd 组件库、redux 状态管理
 
-- 熟悉 js,c 语言,熟悉 es6
+- 熟悉 js 语言,熟悉 es6
 
 - 熟练使用 linux、OS X 系统
 
@@ -35,7 +35,7 @@ sidebar: auto
 
 ## 经历
 
-- 铭瀚科技(0-20 人,创业公司)(2019.9-2020.2)
+- 铭瀚科技(0-20 人,创业公司)(2019.7-2020.2)
 
   - TE GLOBAL(跨平台 APP):独立负责线上产品维护与后续开发工作(区块链开发)(react native+redux++react navigation),公司产品 TE GLOBAL 是一个数字资产交易平台,国际化,支持多语言
 
@@ -52,7 +52,7 @@ sidebar: auto
 
   - 制定技术方案,解决项目开发难点,制定项目开发规范,保障项目质量,可维护性
 
-<!-- - 潭州教育(1000-9999 人)(2020.2-2020-5)
+- 潭州教育(1000-9999 人)(2020.2-2020-5)
 
   - 后台管理系统-教务系统:react 技术栈,umi+dva+antd+scss
 
@@ -73,7 +73,7 @@ sidebar: auto
 
     1. 关于 http 协议的技术分享,内容包含 http 报文,http 协议版本区别
 
-  - 制定开发规范,把控项目进度,技术方案的探讨 -->
+  - 制定开发规范,把控项目进度,技术方案的探讨
 
 ## 项目
 
