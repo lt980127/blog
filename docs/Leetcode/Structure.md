@@ -254,20 +254,32 @@ char * removeDuplicates(char * S){
 
 ## 链表
 
+### 21. 合并两个有序链表
+
+遍历对比大小,最后还剩一个链表没有遍历完,直接拼接到 head 上
+
+```js
+var mergeTwoLists = function (l1, l2) {
+  var head = new ListNode()
+  var cur = head
+  while (l1 && l2) {
+    if (l1.val < l2.val) {
+      cur.next = l1
+      l1 = l1.next
+    } else {
+      cur.next = l2
+      l2 = l2.next
+    }
+    cur = cur.next
+  }
+  cur.next = l1 ? l1 : l2 ? l2 : null
+  return head.next
+}
+```
+
 ### 83. 删除排序链表中的重复元素
 
 ```js
-/**
- * Definition for singly-linked list.
- * function ListNode(val) {
- *     this.val = val;
- *     this.next = null;
- * }
- */
-/**
- * @param {ListNode} head
- * @return {ListNode}
- */
 var deleteDuplicates = function (head) {
   var temp = null
   let cur = head
