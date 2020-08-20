@@ -27,7 +27,7 @@ v2ray info
   BBR 由 Google 开发,供 Linux 内核的 TCP 协议栈使用,有了 BBR 算法,Linux 服务器可以显著提高吞吐量并减少连接延迟,简单来说 BBR 能加速网络传输速度。此外,部署 BBR 也很容易,因为该算法只需要发送方,而不需要网络或接收方的支持。
   这里我就不过多解释了,安装教程也参考其他 blog 的,我自己使用搬瓦工服务器,自带 bbr 加速
 
-  > [bbr 安装教程](https://www.cnblogs.com/sunylat/p/9521881.html)
+  > [bbr 安装教程](https://www.jianshu.com/p/52815c34215e)
 
 - 客户端下载
   - [安卓 apk](https://xjq-blog.oss-cn-shenzhen.aliyuncs.com/blog/science/com.v2ray.ang.AngApplication.apk)
