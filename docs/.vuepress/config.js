@@ -34,7 +34,7 @@ module.exports = {
           { text: '掘金高赞文章', link: 'https://star.xjq.icu' },
           { text: 'AwesomeStudy', link: 'https://github.com/SummerJoan3/awesome-study' },
           { text: 'Github', link: 'https://github.com/SummerJoan3' },
-          { text: '前端技能树', link: 'https://www.processon.com/mindmap/5ed7921ce401fd691953acd6' },
+          { text: '前端技能树', link: 'https://www.processon.com/view/link/5f4647640791297ca40fe328' },
         ],
       },
       { text: 'Resume', link: '/Resume/' },
