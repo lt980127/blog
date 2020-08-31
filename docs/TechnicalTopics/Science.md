@@ -30,6 +30,6 @@ v2ray info
   > [bbr 安装教程](https://www.jianshu.com/p/52815c34215e)
 
 - 客户端下载
-  - [安卓 apk](https://xjq-blog.oss-cn-shenzhen.aliyuncs.com/blog/science/com.v2ray.ang.AngApplication.apk)
-  - [windows](https://xjq-blog.oss-cn-shenzhen.aliyuncs.com/blog/science/v2rayN-Core.zip)
-  - [mac](https://xjq-blog.oss-cn-shenzhen.aliyuncs.com/blog/science/V2RayX.app.zip)
+  - 安卓 apk,[https://image.xjq.icu/books/v2rayNG_1.3.1.apk](https://image.xjq.icu/books/v2rayNG_1.3.1.apk)
+  - windows,[https://image.xjq.icu/books/v2ray-windows-64.zip](https://image.xjq.icu/books/v2ray-windows-64.zip)
+  - mac,[https://image.xjq.icu/books/V2RayX.app.zip](https://image.xjq.icu/books/V2RayX.app.zip)
