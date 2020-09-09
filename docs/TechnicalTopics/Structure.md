@@ -63,6 +63,8 @@ Queue.prototype.size = function (o) {
 
 ## 链表
 
+单链表
+
 ```js
 function Node(elem) {
   this.elem = elem
@@ -153,6 +155,68 @@ LinkedList.prototype.log = function () {
   let cur = this.head
   while (cur) {
     console.log(cur.elem)
+    cur = cur.next
+  }
+}
+```
+
+### 双向链表
+
+```js
+function Node(elem) {
+  this.elem = elem
+  this.next = null
+  this.pre = null
+}
+
+function LinkedList() {
+  this.node = null
+  this.head = null
+  this.length = 0
+}
+
+LinkedList.prototype.append = function (elem) {
+  const newNode = new Node(elem)
+  if (this.head) {
+    this.node.next = newNode
+    newNode.pre = this.node
+  } else {
+    this.head = newNode
+  }
+  this.node = newNode
+}
+
+LinkedList.prototype.find = function (elem) {
+  let cur = this.head
+  while (cur) {
+    if (cur.elem === elem) {
+      return cur
+    }
+    cur = cur.next
+  }
+  return null
+}
+
+LinkedList.prototype.remove = function (elem) {
+  let findNode = this.find(elem)
+  if (!findNode.pre) {
+    findNode.next.pre = null
+    this.head = findNode.next
+  } else if (!findNode.next) {
+    findNode.pre.next = null
+  } else {
+    let nextNode = findNode.next
+    findNode.pre.next = nextNode
+    nextNode.pre = findNode.pre
+  }
+
+  findNode = null
+}
+
+LinkedList.prototype.log = function () {
+  let cur = this.head
+  while (cur) {
+    console.log(cur)
     cur = cur.next
   }
 }
