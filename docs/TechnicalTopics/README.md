@@ -1,6 +1,6 @@
 ---
 title: 数据结构
-sidebarDepth:3
+sidebarDepth: 3
 ---
 
 ## 栈
