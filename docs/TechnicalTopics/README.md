@@ -1,82 +1,430 @@
 ---
-title: http协议
-sidebarDepth: 3
+title: 数据结构
 ---
 
-## 报文
+## 栈
 
-### 首部
+```js
+function Stack(arr) {
+  this.arr = arr
+}
 
-- 通用首部
+Stack.prototype.push = function (o) {
+  this.arr.push(o)
+}
 
-- 请求首部
+Stack.prototype.pop = function (o) {
+  this.arr.pop(o)
+}
 
-- 响应首部
+Stack.prototype.isEmpty = function (o) {
+  return this.arr.length === 0
+}
 
-- 实体首部
+Stack.prototype.top = function (o) {
+  return this.arr[this.arr.lenght - 1]
+}
 
-### 实体
+Stack.prototype.clear = function (o) {
+  this.arr = []
+}
+Stack.prototype.size = function (o) {
+  return this.arr.length
+}
+```
 
-## scouter 是如何判断的?
+## 队列
 
-### 缓存? 压缩方式? 重定向? 跨域? HSTS?
+```js
+function Queue() {
+  this.arr = []
+}
 
-### 资源大小计算?
+Queue.prototype.enqueue = function (o) {
+  this.arr.push(o)
+}
 
-## 缓存
+Queue.prototype.dequeue = function (o) {
+  this.arr.shift()
+}
 
-### 强缓存
+Queue.prototype.front = function (o) {
+  return this.arr[0]
+}
 
-#### Expires
+Queue.prototype.isEmpty = function (o) {
+  return this.arr.length === 0
+}
 
-http1.0: Expires(在这个字段时间之前都采用缓存),绝对时间
+Queue.prototype.size = function (o) {
+  return this.arr.length
+}
+```
 
-#### Cache-Control
+## 链表
 
-- 对响应头来说
+单链表
 
-max-age:相对时间的强缓存
+```js
+function Node(elem) {
+  this.elem = elem
+  this.next = null
+}
 
-s-maxage:针对于公共缓存服务器的指令(公共服务器:比如 cdn),如果存在这个字段,会忽略 max-age
+function LinkedList() {
+  this.node = null
+  this.next = null
+  this.head = null
+  this.length = 0
+}
 
-- 对请求头来说
+LinkedList.prototype.append = function (o) {
+  const node = new Node(o)
 
-max-age:在客户端角度,如果缓存资源的缓存时间数值比指定时间的数值更小，那么客户端就接收缓存的资源,当这个字段为 0 时,通常缓存服务器会将请求转发给源服务器
+  if (this.head === null) {
+    this.head = node
+    this.node = node
+  } else {
+    this.node.next = node
+    this.node = node
+  }
 
-### 协商缓存
+  this.length++
+}
 
-#### Last-Modified 和 If-Modified-Since
+LinkedList.prototype.insert = function (position, elem) {
+  const len = this.length()
+  if (position < 0 || position > len) {
+    throw new Error('越界')
+  }
+  if (position === undefined || elem === undefined) {
+    throw new Error('insert调用参数不全')
+  }
+  if (position === len) {
+    this.append(elem)
+    return
+  }
+  let index = 0
+  let cur = this.head
 
-在服务端对比来自客户端的 if-Modified-Since 时间与文件最后修改时间,如果不相同则文件已修改,返回新的修改时间 Last-Modified 与文件,否则返回 304 状态码
+  while (index < position) {
+    cur = cur.next
+    index++
+  }
+  let nextNode = cur.next
+  let newNode = new Node(elem)
+  newNode.next = nextNode
+  cur.next = newNode
 
-#### ETag 和 If-None-Match
+  this.length++
+}
 
-文件内容改变时,文件唯一标识 ETag 也会改变,每次服务器接收请求时,对比来自客户端的 ETag 值,如果相同返回 304 状态码
+LinkedList.prototype.find = function (elem) {
+  let cur = this.head
+  while (cur) {
+    if (cur.elem === elem) {
+      return cur
+    }
+    cur = cur.next
+  }
+  return null
+}
 
-## 状态码
+LinkedList.prototype.findPre = function (elem) {
+  let cur = this.head
+  while (cur) {
+    if (cur.next && cur.next.elem === elem) {
+      return cur
+    }
+    cur = cur.next
+  }
+  return null
+}
 
-## http 1.1 的特性
+LinkedList.prototype.remove = function (elem) {
+  const preNode = this.findPre(elem)
+  console.log(preNode)
+  if (!preNode) {
+    throw new Error('找不到该元素')
+  }
+  preNode.next = preNode.next.next
+  this.length--
+}
 
-### 长连接
+LinkedList.prototype.log = function () {
+  let cur = this.head
+  while (cur) {
+    console.log(cur.elem)
+    cur = cur.next
+  }
+}
+```
 
-新增 Connection 字段,设置 keep-alive 保持 TCP 连接,直至有一方主动断开连接,默认保持长连接
+### 双向链表
 
-### 管线化(并行请求)
+```js
+function Node(elem) {
+  this.elem = elem
+  this.next = null
+  this.pre = null
+}
 
-基于长连接的基础,并行发起请求(响应依旧阻塞),而且浏览器客户端针对于同一时间,同一域名也会有请求数量限制
+function LinkedList() {
+  this.node = null
+  this.head = null
+  this.length = 0
+}
 
-### 缓存
+LinkedList.prototype.append = function (elem) {
+  const newNode = new Node(elem)
+  if (this.head) {
+    this.node.next = newNode
+    newNode.pre = this.node
+  } else {
+    this.head = newNode
+  }
+  this.node = newNode
+}
 
-新增 Cache-Control
+LinkedList.prototype.find = function (elem) {
+  let cur = this.head
+  while (cur) {
+    if (cur.elem === elem) {
+      return cur
+    }
+    cur = cur.next
+  }
+  return null
+}
 
-## http 2 的特性
+LinkedList.prototype.remove = function (elem) {
+  let findNode = this.find(elem)
+  if (!findNode.pre) {
+    findNode.next.pre = null
+    this.head = findNode.next
+  } else if (!findNode.next) {
+    findNode.pre.next = null
+  } else {
+    let nextNode = findNode.next
+    findNode.pre.next = nextNode
+    nextNode.pre = findNode.pre
+  }
 
-### 多路复用
+  findNode = null
+}
 
-允许通过单一的 HTTP/2 连接发起多重的请求-响应
+LinkedList.prototype.log = function () {
+  let cur = this.head
+  while (cur) {
+    console.log(cur)
+    cur = cur.next
+  }
+}
+```
 
-### 二进制分帧
+## 二叉树
 
-HTTP 1.x 在应用层以纯文本的形式进行通信，而 HTTP 2.0 将所有的传输信息分割为更小的消息和帧，并对它们采用二进制格式编码
+### 构造
 
-### 请求优先级
+```js
+function Node(elem, left, right) {
+  this.elem = elem
+  this.left = left || null
+  this.right = right || null
+}
+
+function BST() {
+  this.root = null
+}
+```
+
+### 插入
+
+```js
+BST.prototype.insert = function (elem) {
+  const newNode = new Node(elem)
+  if (!this.root) {
+    this.root = newNode
+  } else {
+    let cur = this.root
+    let parent
+    while (true) {
+      parent = cur
+      if (elem < cur.elem) {
+        cur = cur.left
+        if (cur === null) {
+          parent.left = newNode
+          break
+        }
+      } else {
+        cur = cur.right
+        if (cur === null) {
+          parent.right = newNode
+          break
+        }
+      }
+    }
+  }
+}
+```
+
+### 遍历
+
+递归
+
+```js
+function inOrder(node) {
+  if (node !== null) {
+    inOrder(node.left)
+    console.log(node.elem)
+    inOrder(node.right)
+  }
+}
+
+function preOrder(node) {
+  if (node !== null) {
+    console.log(node.elem)
+    preOrder(node.left)
+    preOrder(node.right)
+  }
+}
+
+function postOrder(node) {
+  if (node !== null) {
+    postOrder(node.left)
+    postOrder(node.right)
+    console.log(node.elem)
+  }
+}
+```
+
+### 查找
+
+```js
+BST.prototype.find = function (elem) {
+  let cur = this.root
+  while (cur !== null && cur.elem !== elem) {
+    if (cur.elem > elem) {
+      cur = cur.left
+    } else {
+      cur = cur.right
+    }
+  }
+  return cur
+}
+```
+
+## 图
+
+### 无向图
+
+```js
+function Vertex(label) {
+  this.label = label
+}
+
+function Graph(v) {
+  this.vertices = v
+  this.edges = 0
+  this.adj = []
+  for (var i = 0; i < this.vertices; ++i) {
+    this.adj[i] = []
+  }
+}
+
+Graph.prototype.addEdge = function (v, w) {
+  const vVertex = new Vertex(v)
+  const wVertex = new Vertex(w)
+  this.adj[v].push(wVertex)
+  this.adj[w].push(vVertex)
+  this.edges++
+}
+
+Graph.prototype.show = function () {
+  let log = ''
+  for (var i = 0; i < this.vertices; ++i) {
+    log = `${i} -> `
+    for (var j = 0; j < this.vertices; ++j) {
+      const item = this.adj[i][j]
+      if (item !== undefined) {
+        log = log.concat(`${item.label}, `)
+      }
+    }
+    console.log(log)
+  }
+}
+```
+
+### 搜索图
+
+#### 深度优先搜索
+
+```js
+function Graph(v) {
+  this.vertices = v
+  this.edges = 0
+  this.marked = []
+
+  this.adj = []
+  for (var i = 0; i < this.vertices; ++i) {
+    this.adj[i] = []
+    this.marked[i] = false
+  }
+}
+
+Graph.prototype.addEdge = function (v, w) {
+  this.adj[v].push(w)
+  this.adj[w].push(v)
+  this.edges++
+}
+
+Graph.prototype.show = function () {
+  let log = ''
+  for (var i = 0; i < this.vertices; ++i) {
+    log = `${i} -> `
+    for (var j = 0; j < this.vertices; ++j) {
+      const item = this.adj[i][j]
+      if (item !== undefined) {
+        log = log.concat(`${item}, `)
+      }
+    }
+    console.log(log)
+  }
+}
+
+Graph.prototype.dfs = function (v = 0) {
+  this._dfs(v)
+}
+Graph.prototype._dfs = function (v) {
+  this.marked[v] = true
+  console.log(v)
+  this.adj[v].forEach((w) => {
+    if (!this.marked[w]) {
+      this._dfs(w)
+    }
+  })
+}
+```
+
+#### 广度优先搜索
+
+```js
+Graph.prototype.bfs = function (v) {
+  const queue = []
+  queue.push(v)
+  this.marked[v] = true
+  while (queue.length > 0) {
+    let log = ''
+    let curV = queue.shift()
+    log = log.concat(`${curV} `)
+    console.log(curV)
+
+    this.adj[curV].forEach((w) => {
+      if (!this.marked[w]) {
+        this.marked[w] = true
+        queue.push(w)
+      }
+    })
+  }
+}
+```

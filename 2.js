@@ -30,24 +30,29 @@ Graph.prototype.show = function () {
   }
 }
 
-Graph.prototype.dfs = function (v = 0) {
-  this._dfs(v)
-}
-Graph.prototype._dfs = function (v) {
+Graph.prototype.bfs = function (v) {
+  const queue = []
+  queue.push(v)
   this.marked[v] = true
-  console.log(v)
-  this.adj[v].forEach((w) => {
-    if (!this.marked[w]) {
-      this._dfs(w)
-    }
-  })
+  while (queue.length > 0) {
+    let log = ''
+    let curV = queue.shift()
+    log = log.concat(`${curV} `)
+    console.log(curV)
+
+    this.adj[curV].forEach((w) => {
+      if (!this.marked[w]) {
+        this.marked[w] = true
+        queue.push(w)
+      }
+    })
+  }
 }
 
 const g = new Graph(5)
 g.addEdge(0, 1)
-g.addEdge(1, 2)
 g.addEdge(0, 2)
-g.addEdge(0, 3)
-g.addEdge(0, 4)
+g.addEdge(1, 3)
+g.addEdge(2, 4)
 
-g.dfs()
+g.bfs(0)

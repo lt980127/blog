@@ -63,7 +63,7 @@ module.exports = {
         'Traversing',
         'Vscode',
       ],
-      '/TechnicalTopics/': ['', 'Git', 'C', 'DesignPattern', 'Science', 'Http', 'Structure'],
+      '/TechnicalTopics/': ['', 'Git', 'C', 'DesignPattern', 'Science', 'Http'],
       '/Leetcode/': ['', 'Structure', 'String', 'Array', 'Sort'],
     },
   },
