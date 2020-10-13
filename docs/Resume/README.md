@@ -24,6 +24,8 @@ sidebar: auto
 
 - 熟悉常用状态管理(redux、vuex、dva 等)
 
+- 熟悉常用组件库
+
 - 熟悉 js ,熟悉 es6 语法
 
 - 熟练使用 linux、OS X 系统
