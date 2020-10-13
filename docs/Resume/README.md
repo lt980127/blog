@@ -7,7 +7,7 @@ sidebar: auto
 
 - 姓名 : xjq(男)
 - 统招本科 / 南华大学 / 网络工程
-- 工作经验 : 1 年
+- 工作经验 : 2 年
 - 技术博客 : [https://xjq.icu](https://xjq.icu)
 - 个人技能树:[https://www.processon.com/view/link/5f4647640791297ca40fe328#map](https://www.processon.com/view/link/5f4647640791297ca40fe328#map)
 - 年龄 : 24
@@ -75,6 +75,14 @@ sidebar: auto
   - 制定开发规范,把控项目进度,技术方案的探讨
 
   - 图床,存储图片及文件,[https://img.xjq.icu](https://img.xjq.icu)
+
+- 丰艺国际文化艺术有限公司(2020.6-至今)
+
+  - react-native APP 研发工作
+
+  - 后台管理系统开发,react、antd
+
+  - APP 內 H5 页面开发
 
 ## 特征
 
